@@ -1,4 +1,4 @@
-Support Vector Machine
+Support Vector Machine/サポートベクターマシン/支持向量机
 ======================
 Java OOP Port from C LibSVM library
 
