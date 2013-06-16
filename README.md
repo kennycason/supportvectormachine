@@ -1,5 +1,5 @@
-Support Vector Machine/サポートベクターマシン/支持向量机
-======================
+<h2>Support Vector Machine/サポートベクターマシン/支持向量机</h2>
+
 Java OOP Port from C LibSVM library
 
 <table>
