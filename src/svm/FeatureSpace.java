@@ -1,8 +1,8 @@
 package svm;
 
-import lib.vector.AbstractSparseVector;
+import lib.vector.SparseVector;
 
-public class FeatureSpace extends AbstractSparseVector {
+public class FeatureSpace extends SparseVector {
 
 	public FeatureSpace(int size, double ... values) {
 		super(size);

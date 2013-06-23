@@ -3,18 +3,22 @@ package lib.vector;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public abstract class AbstractSparseVector implements IVector {
+public class SparseVector implements IVector {
 	
 	protected ArrayList<SparseVectorNode> vals;
 	
 	protected int size = 0;
 	
-	protected AbstractSparseVector(int size) {
+	public SparseVector() {
+		this(0);
+	}
+	
+	public SparseVector(int size) {
 		vals = new ArrayList<SparseVectorNode>(size);
 		this.size = size;
 	}
 	
-	protected AbstractSparseVector(SparseVectorNode[] nodes) {
+	public SparseVector(SparseVectorNode[] nodes) {
 		vals = new ArrayList<SparseVectorNode>();
 		for(SparseVectorNode node : nodes) {
 			set(node.getIndex(), node.getValue());
@@ -104,6 +108,15 @@ public abstract class AbstractSparseVector implements IVector {
 		return Math.sqrt(distanceSquared(vector));
 	}
 	
+	public SparseVector unit() {
+		SparseVector v = new SparseVector();
+		double m = magnitude();
+		for(int i = 0; i < size(); i++) {
+			v.set(i, get(i) / m);
+		}
+		return v;
+	}
+	
 	public int size() {
 		return size;
 	}
@@ -122,6 +135,31 @@ public abstract class AbstractSparseVector implements IVector {
 		}
 		sb.append(")");
 		return sb.toString();
+	}
+	
+	private class SparseVectorNode {
+
+		private int index;
+		
+		private double value;
+		
+		public SparseVectorNode(int index, double value) {
+			this.index = index;
+			this.value = value;
+		}
+		
+		public int getIndex() {
+			return index;
+		}
+		
+		public double getValue() {
+			return value;
+		}
+		
+		public void setValue(double value) {
+			this.value = value;
+		}
+		
 	}
 
 }
